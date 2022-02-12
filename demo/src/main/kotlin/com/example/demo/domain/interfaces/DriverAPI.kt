@@ -3,12 +3,15 @@ import com.example.demo.domain.Driver;
 import com.example.demo.domain.DriverRepository
 import org.springframework.http.MediaType
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*
 import org.springframework.web.server.ResponseStatusException;
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
+import java.time.LocalDate
+import javax.persistence.Entity
+import javax.persistence.GeneratedValue
+import javax.persistence.Id
 
 
 @Service //para que a classe seja reconhecida pelo Spring
@@ -26,6 +29,12 @@ import org.springframework.web.server.ResponseStatusException;
     fun findDriver(@PathVariable("id") id: Long) =
             driverRepository.findById(id)
                     .orElseThrow(){ ResponseStatusException(HttpStatus.NOT_FOUND)} //erro 404 e não o 500 em caso de um id inexistente
+
+    @PostMapping("/drivers")
+    fun createDriver(@RequestBody driver: Driver): Driver = driverRepository.save(driver)
+
+
+
 }
 
 
