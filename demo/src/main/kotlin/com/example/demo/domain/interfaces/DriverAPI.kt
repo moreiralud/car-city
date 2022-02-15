@@ -9,10 +9,12 @@ import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.PutMapping
+import org.springframework.web.bind.annotation.PatchMapping
 import java.time.LocalDate
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
+
 
 
 @Service //para que a classe seja reconhecida pelo Spring
@@ -44,7 +46,20 @@ import javax.persistence.Id
         return driverRepository.save(copyDriver)
     }
 
+    @PatchMapping("/drivers/{id}")
+    fun incrementalUpdateDriver(@PathVariable("id") id:Long, @RequestBody driver: PatchDriver) : Driver {
+        val foundDriver = findDriver(id)
+        val copyDriver = foundDriver.copy(
+            birthDate = driver.birthDate ?: foundDriver.birthDate,
+            name = driver.name ?: foundDriver.name
+        )
+        return driverRepository.save(copyDriver)
+    }
+
 }
 
-
+data class PatchDriver(
+    val name: String?,
+    val birthDate: LocalDate?
+)
 
