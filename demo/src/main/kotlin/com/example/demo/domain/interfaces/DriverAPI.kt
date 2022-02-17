@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.PatchMapping
+import org.springframework.web.bind.annotation.DeleteMapping
 import java.time.LocalDate
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
@@ -55,6 +56,9 @@ import javax.persistence.Id
         )
         return driverRepository.save(copyDriver)
     }
+    @DeleteMapping("/drivers/{id}")
+    fun deleteDriver(@PathVariable("id") id:Long) =
+        driverRepository.deleteById(id)
 
 }
 
