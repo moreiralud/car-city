@@ -14,3 +14,11 @@ data class Driver(
         val birthDate : LocalDate,
         val gender : Char
 )
+
+@Entity
+data class Passenger(
+        @Id
+        @GeneratedValue
+        var id: Long? = null,
+        val name: String
+)

@@ -58,7 +58,7 @@ import javax.persistence.Id
     }
     @DeleteMapping("/drivers/{id}")
     fun deleteDriver(@PathVariable("id") id:Long) =
-        driverRepository.deleteById(id)
+        driverRepository.delete(findDriver(id))
 
 }
 
