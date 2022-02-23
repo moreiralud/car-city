@@ -35,3 +35,4 @@ data class TravelRequest(
         val origin : String,
         val destination: String
 )
+

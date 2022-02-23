@@ -1,13 +1,13 @@
 package com.example.demo.domain
 
-import com.example.demo.domain.interfaces.TravelRequestInput
 import org.springframework.stereotype.Component
 
+//salva os pedidos de viagem
 @Component
 class TravelSevice (
     val travelRequestRepository: TravelRequestRepository
     ){
-    fun saveTravelRequest(travelRequest: TravelRequestInput) =
+    fun saveTravelRequest(travelRequest: TravelRequest) =
         travelRequestRepository.save(travelRequest)
 }
 
