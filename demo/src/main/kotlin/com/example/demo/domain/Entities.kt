@@ -1,10 +1,14 @@
 package com.example.demo.domain
 
+import com.example.demo.domain.interfaces.TravelRequestStatus
 import java.time.LocalDate
+import java.time.LocalDateTime
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
 import javax.persistence.ManyToOne
+import java.time.LocalTime
+
 
 @Entity
 data class Driver(
@@ -33,6 +37,10 @@ data class TravelRequest(
         @ManyToOne
         val passenger: Passenger,
         val origin : String,
-        val destination: String
+        val destination: String,
+        val status: TravelRequestStatus = TravelRequestStatus.CREATED,
+        val creationDate: LocalDateTime = LocalDateTime.now()
 )
+
+
 

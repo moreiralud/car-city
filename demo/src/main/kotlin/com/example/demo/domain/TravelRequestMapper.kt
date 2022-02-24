@@ -9,12 +9,14 @@ import org.springframework.web.server.ResponseStatusException
 class TravelRequestMapper (
     val passengerRepository:  PassengerRepository
 ) {
-    fun map (input: TravelRequestInput) : TravelRequest {
-        val passenger = passengerRepository.findById(input.passengerId)
-            .orElseThrow {ResponseStatusException(HttpStatus.NOT_FOUND)}
 
-        return TravelRequest(passenger = passenger,
-        origin = input.origin,
-        destination = input.destination)
+    fun map(travelRequest: TravelRequest) : TravelRequestOutput{
+        return TravelRequestOutput(
+            id = travelRequest.id!!, //apesar do campo poder ser nulo, nesse contexto ele nunca deverá estar nulo
+            origin = travelRequest.origin,
+            destination = travelRequest.destination,
+            status = travelRequest.status,
+            creationDate = travelRequest.creationDate
+        )
     }
 }

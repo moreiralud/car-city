@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping(path = ["/travelRequests"], produces = [MediaType.APPLICATION_JSON_VALUE])
 class TravelRequestAPI(
-    val travelSevice : TravelSevice
+    val travelSevice : TravelSevice,
     val mapper: TravelRequestMapper
     ){
 
@@ -23,6 +23,10 @@ class TravelRequestAPI(
         travelSevice.saveTravelRequest(mapper.map(travelRequestInput))
 
     }
+}
+
+enum class  TravelRequestStatus{
+    CREATED, ACCEPTED, REFUSED
 }
 
 data class TravelRequestInput(
