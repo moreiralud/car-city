@@ -1,13 +1,13 @@
 package com.example.demo.domain
 
-import com.example.demo.domain.interfaces.TravelRequestStatus
+
 import java.time.LocalDate
 import java.time.LocalDateTime
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
 import javax.persistence.ManyToOne
-import java.time.LocalTime
+
 
 
 @Entity
@@ -42,5 +42,7 @@ data class TravelRequest(
         val creationDate: LocalDateTime = LocalDateTime.now()
 )
 
-
+enum class TravelRequestStatus {
+        CREATED, ACCEPTED, REFUSED
+}
 

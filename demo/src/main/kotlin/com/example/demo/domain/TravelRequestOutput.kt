@@ -1,6 +1,5 @@
 package com.example.demo.domain
 
-import com.example.demo.domain.interfaces.TravelRequestStatus
 import java.time.LocalDateTime
 
 class TravelRequestOutput (
