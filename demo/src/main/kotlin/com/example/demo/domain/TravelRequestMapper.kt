@@ -42,6 +42,7 @@ class TravelRequestMapper (
 
         val passengerLink = WebMvcLinkBuilder
             .linkTo(PassengerAPI::class.java)
+            .slash(travelRequest.passenger.id)
             .withRel("passenger")
             .withTitle(travelRequest.passenger.name)
 

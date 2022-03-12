@@ -26,6 +26,7 @@ dependencies {
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	implementation("org.springframework.hateoas:spring-hateoas")
+	implementation("com.jayway.jsonpath:json-path")
 }
 
 tasks.withType<KotlinCompile> {
